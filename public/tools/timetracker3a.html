@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <title>Timesheet Tracker</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        /* Custom scrollbar for a better dark mode experience */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 6px;
+            border: 3px solid #2d3748;
+        }
+    </style>
+</head>
+<body style="background-color: #606060;" class="text-white font-bold">
+    <div id="root"></div>
+
+    <script type="text/babel">
+    // Timesheet Tracker | Prompt generated by Dave Baker | Code generated by Gemini
+    // Last updated: 7/18/2025
+
+    const { useState, useEffect, useMemo } = React;
+
+    // --- Helper Icons ---
+    const NewFormIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>;
+    const EditIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" /></svg>;
+    const DeleteIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>;
+    const ClockIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+    const CalendarIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;
+    const CloseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>;
+
+    // --- Main Application Component ---
+    function App() {
+        // --- State Management ---
+        const [entries, setEntries] = useState(() => {
+            try {
+                const savedEntries = localStorage.getItem('timesheetEntries');
+                return savedEntries ? JSON.parse(savedEntries) : [];
+            } catch (error) {
+                console.error("Error parsing entries from localStorage", error);
+                return [];
+            }
+        });
+
+        const getInitialForm = () => ({
+            id: Date.now(),
+            formData: {
+                taskName: '',
+                company: '',
+                date: new Date().toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' }),
+                startTime: '',
+                endTime: '',
+                actualTime: '',
+                ticketNumber: ''
+            },
+            editingEntryId: null
+        });
+
+        const [forms, setForms] = useState([getInitialForm()]);
+        const [darkMode, setDarkMode] = useState(true);
+        const [showDeleteCheckedPrompt, setShowDeleteCheckedPrompt] = useState(false);
+        const [showDeleteOldPrompt, setShowDeleteOldPrompt] = useState(false);
+        const [formToDelete, setFormToDelete] = useState(null);
+        const [entryToDelete, setEntryToDelete] = useState(null);
+
+        // --- Effects ---
+        useEffect(() => {
+            localStorage.setItem('timesheetEntries', JSON.stringify(entries));
+        }, [entries]);
+
+        useEffect(() => {
+            const root = window.document.documentElement;
+            if (darkMode) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+        }, [darkMode]);
+
+        // --- Helper & Business Logic Functions ---
+        const parseTime = (timeStr) => {
+            if (!timeStr) return null;
+            let str = String(timeStr).toLowerCase().replace(/[^a-z0-9:]/g, '');
+            let hours, minutes;
+            let isPM = str.includes('pm');
+            let isAM = str.includes('am');
+            str = str.replace(/am|pm/g, '');
+
+            if (str.includes(':')) {
+                [hours, minutes] = str.split(':').map(Number);
+            } else {
+                if (str.length <= 2) {
+                    hours = Number(str);
+                    minutes = 0;
+                } else {
+                    hours = Number(str.slice(0, -2));
+                    minutes = Number(str.slice(-2));
+                }
+            }
+
+            if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+                 if (isPM && hours >= 1 && hours <= 12) { // Handle PM case for 12xx PM
+                     // it's valid, just need to adjust hours
+                 } else {
+                    return null;
+                 }
+            }
+
+            if (isPM && hours < 12) {
+                hours += 12;
+            }
+            if (isAM && hours === 12) { // Midnight case: 12:xx AM
+                hours = 0;
+            }
+            
+            const date = new Date();
+            date.setHours(hours, minutes, 0, 0);
+            return date;
+        };
+        
+        const formatTimeForDisplay = (timeObj) => {
+            if (!timeObj) return '';
+            const hours = String(timeObj.getHours()).padStart(2, '0');
+            const minutes = String(timeObj.getMinutes()).padStart(2, '0');
+            return `${hours}:${minutes}`;
+        };
+
+        const calculateAndUpdateActualTime = (formIndex) => {
+            setForms(currentForms => {
+                const newForms = [...currentForms];
+                const form = newForms[formIndex];
+                const start = parseTime(form.formData.startTime);
+                const end = parseTime(form.formData.endTime);
+
+                if (start && end) {
+                    let diff = (end.getTime() - start.getTime()) / (1000 * 60);
+                    if (diff < 0) diff += 24 * 60; // Handles overnight times
+                    form.formData.actualTime = String(Math.round(diff));
+                }
+                return newForms;
+            });
+        };
+        
+        const roundToNearest15 = (minutes) => {
+            if (isNaN(minutes) || minutes <= 0) return 0;
+            return Math.ceil(minutes / 15) * 15;
+        };
+
+        // --- Event Handlers ---
+        const handleFormChange = (index, field, value) => {
+            setForms(currentForms => {
+                const newForms = [...currentForms];
+                newForms[index].formData[field] = value;
+                return newForms;
+            });
+            if (field === 'startTime' || field === 'endTime') {
+                calculateAndUpdateActualTime(index);
+            }
+        };
+
+        const handleAddForm = () => {
+            setForms(currentForms => [...currentForms, getInitialForm()]);
+        };
+        
+        const handleInitiateRemoveForm = (formId) => {
+            setFormToDelete(formId);
+        };
+
+        const confirmRemoveForm = () => {
+            setForms(currentForms => currentForms.filter(form => form.id !== formToDelete));
+            setFormToDelete(null);
+        };
+
+        const handleAddOrUpdateEntry = (formIndex) => {
+            const form = forms[formIndex];
+            const { taskName, company, date, startTime, endTime, actualTime, ticketNumber } = form.formData;
+
+            if (!taskName || !company || !actualTime) {
+                alert("Task Name, Company, and Actual Time are required.");
+                return;
+            }
+            
+            const parsedStartTime = parseTime(startTime);
+            const parsedEndTime = parseTime(endTime);
+            const finalActualTime = Number(actualTime);
+
+            const newEntry = {
+                id: form.editingEntryId || Date.now(),
+                taskName,
+                company,
+                date,
+                startTime: parsedStartTime ? formatTimeForDisplay(parsedStartTime) : '',
+                endTime: parsedEndTime ? formatTimeForDisplay(parsedEndTime) : '',
+                actualTime: finalActualTime,
+                timesheetTime: roundToNearest15(finalActualTime),
+                ticketNumber,
+                timeEntered: false,
+                createdAt: form.editingEntryId ? entries.find(e => e.id === form.editingEntryId).createdAt : new Date().toISOString()
+            };
+
+            if (form.editingEntryId) {
+                // Update existing entry
+                setEntries(currentEntries => currentEntries.map(entry => entry.id === form.editingEntryId ? newEntry : entry));
+                // Remove the editing form
+                setForms(currentForms => currentForms.filter(f => f.id !== form.id));
+            } else {
+                // Add new entry
+                setEntries(currentEntries => [newEntry, ...currentEntries]);
+                // Clear the form
+                setForms(currentForms => {
+                    const newForms = [...currentForms];
+                    newForms[formIndex] = getInitialForm();
+                    // Keep the id stable for the first form
+                    newForms[0].id = currentForms[0].id;
+                    return newForms;
+                });
+            }
+        };
+        
+        const handleEdit = (entryId) => {
+            const entryToEdit = entries.find(entry => entry.id === entryId);
+            if (!entryToEdit) return;
+
+            const editForm = {
+                id: Date.now(),
+                formData: {
+                    taskName: entryToEdit.taskName,
+                    company: entryToEdit.company,
+                    date: entryToEdit.date,
+                    startTime: entryToEdit.startTime,
+                    endTime: entryToEdit.endTime,
+                    actualTime: String(entryToEdit.actualTime),
+                    ticketNumber: entryToEdit.ticketNumber
+                },
+                editingEntryId: entryId
+            };
+            setForms(currentForms => [...currentForms, editForm]);
+        };
+        
+        const handleInitiateDelete = (entryId) => {
+            setEntryToDelete(entryId);
+        };
+        
+        const confirmDeleteEntry = () => {
+            setEntries(currentEntries => currentEntries.filter(entry => entry.id !== entryToDelete));
+            setEntryToDelete(null);
+        };
+
+        const handleToggleEntered = (entryId) => {
+            setEntries(currentEntries => currentEntries.map(entry => 
+                entry.id === entryId ? { ...entry, timeEntered: !entry.timeEntered } : entry
+            ));
+        };
+        
+        const confirmDeleteChecked = () => {
+             setEntries(currentEntries => currentEntries.filter(entry => !entry.timeEntered));
+             setShowDeleteCheckedPrompt(false);
+        };
+
+        const confirmDeleteOld = () => {
+            const fortyEightHoursAgo = new Date(Date.now() - 48 * 60 * 60 * 1000);
+            setEntries(currentEntries => currentEntries.filter(entry => {
+                const entryDate = new Date(entry.createdAt);
+                return entryDate > fortyEightHoursAgo;
+            }));
+            setShowDeleteOldPrompt(false);
+        };
+
+        const handleSetCurrentTime = (formIndex, field) => {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            handleFormChange(formIndex, field, `${hours}${minutes}`);
+        };
+
+        const handleSetCurrentDate = (formIndex) => {
+            const now = new Date();
+            handleFormChange(formIndex, 'date', now.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' }));
+        };
+
+        // --- Memoized Calculations for Summary ---
+        const summary = useMemo(() => {
+            const totalEntries = entries.length;
+            const totalActualTime = entries.reduce((sum, entry) => sum + entry.actualTime, 0);
+            const totalBillableTime = entries
+                .filter(entry => !entry.timeEntered)
+                .reduce((sum, entry) => sum + entry.timesheetTime, 0);
+            return { totalEntries, totalActualTime, totalBillableTime };
+        }, [entries]);
+
+        // --- Render Logic ---
+        const renderForm = (form, index) => (
+            <div key={form.id} style={{backgroundColor: '#4f74b0'}} className="p-4 rounded-lg mb-6 relative shadow-lg">
+                {index > 0 || form.editingEntryId ? (
+                    <button 
+                        onClick={() => handleInitiateRemoveForm(form.id)} 
+                        className="absolute top-2 right-2 text-white hover:text-red-400 transition-colors"
+                        title="Remove this form"
+                    >
+                        <CloseIcon />
+                    </button>
+                ) : null}
+
+                {/* Row 1: Task & Company */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label htmlFor={`taskName-${form.id}`} className="block mb-1">Task Details</label>
+                        <textarea id={`taskName-${form.id}`} value={form.formData.taskName} onChange={(e) => handleFormChange(index, 'taskName', e.target.value)} rows="2" className="w-full p-2 rounded bg-gray-200 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                    </div>
+                    <div>
+                        <label htmlFor={`company-${form.id}`} className="block mb-1">Company</label>
+                        <input type="text" id={`company-${form.id}`} value={form.formData.company} onChange={(e) => handleFormChange(index, 'company', e.target.value)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                    </div>
+                </div>
+
+                {/* Row 2: Time, Date, etc. */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
+                    <div>
+                        <label htmlFor={`date-${form.id}`} className="flex items-center mb-1">
+                            Date
+                            <span title="Set current date" className="ml-2 hover:opacity-75" onClick={() => handleSetCurrentDate(index)}><CalendarIcon /></span>
+                        </label>
+                        <input type="text" id={`date-${form.id}`} value={form.formData.date} onChange={(e) => handleFormChange(index, 'date', e.target.value)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="M/D/YYYY" />
+                    </div>
+                    <div>
+                        <label htmlFor={`startTime-${form.id}`} className="flex items-center mb-1">
+                            Start Time
+                            <span title="Set current time" className="ml-2 hover:opacity-75" onClick={() => handleSetCurrentTime(index, 'startTime')}><ClockIcon /></span>
+                        </label>
+                        <input type="text" id={`startTime-${form.id}`} value={form.formData.startTime} onChange={(e) => handleFormChange(index, 'startTime', e.target.value)} onBlur={() => calculateAndUpdateActualTime(index)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="e.g., 9:30 or 1400" />
+                    </div>
+                    <div>
+                        <label htmlFor={`endTime-${form.id}`} className="flex items-center mb-1">
+                            End Time
+                             <span title="Set current time" className="ml-2 hover:opacity-75" onClick={() => handleSetCurrentTime(index, 'endTime')}><ClockIcon /></span>
+                        </label>
+                        <input type="text" id={`endTime-${form.id}`} value={form.formData.endTime} onChange={(e) => handleFormChange(index, 'endTime', e.target.value)} onBlur={() => calculateAndUpdateActualTime(index)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="e.g., 17:00 or 5pm" />
+                    </div>
+                     <div>
+                        <label htmlFor={`actualTime-${form.id}`} className="block mb-1">Actual Time (min)</label>
+                        <input type="number" id={`actualTime-${form.id}`} value={form.formData.actualTime} onChange={(e) => handleFormChange(index, 'actualTime', e.target.value)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                    </div>
+                    <div>
+                        <label htmlFor={`ticketNumber-${form.id}`} className="block mb-1">Ticket Number</label>
+                        <input type="text" id={`ticketNumber-${form.id}`} value={form.formData.ticketNumber} onChange={(e) => handleFormChange(index, 'ticketNumber', e.target.value)} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                    </div>
+                </div>
+
+                {/* Form Actions */}
+                <div className="mt-4 flex justify-between items-center">
+                    <div>
+                        {index === 0 && !form.editingEntryId && (
+                             <button onClick={handleAddForm} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition-colors">
+                                <NewFormIcon /> New Entry
+                            </button>
+                        )}
+                    </div>
+                    <button onClick={() => handleAddOrUpdateEntry(index)} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                        {form.editingEntryId ? 'Update Entry' : 'Add Entry'}
+                    </button>
+                </div>
+            </div>
+        );
+        
+        const ConfirmationModal = ({ title, onConfirm, onCancel }) => (
+            <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+                <div className="bg-gray-800 p-8 rounded-lg shadow-xl text-center">
+                    <h3 className="text-xl mb-6">{title}</h3>
+                    <div className="flex justify-center gap-4">
+                        <button onClick={onConfirm} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors">Yes</button>
+                        <button onClick={onCancel} className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded transition-colors">No</button>
+                    </div>
+                </div>
+            </div>
+        );
+
+        return (
+            <div className="container mx-auto p-4 md:p-8">
+                {/* --- Modals for Confirmation --- */}
+                {showDeleteCheckedPrompt && <ConfirmationModal title="Delete all entries that are checked?" onConfirm={confirmDeleteChecked} onCancel={() => setShowDeleteCheckedPrompt(false)} />}
+                {showDeleteOldPrompt && <ConfirmationModal title="Delete all entries that are more than 48 hours old?" onConfirm={confirmDeleteOld} onCancel={() => setShowDeleteOldPrompt(false)} />}
+                {formToDelete && <ConfirmationModal title="Delete this time entry form?" onConfirm={confirmRemoveForm} onCancel={() => setFormToDelete(null)} />}
+                {entryToDelete && <ConfirmationModal title="Permanently delete this entry?" onConfirm={confirmDeleteEntry} onCancel={() => setEntryToDelete(null)} />}
+
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className="text-4xl font-thin">Timesheet Tracker</h1>
+                    <div className="flex items-center">
+                        <span className="mr-2 text-sm">{darkMode ? 'Dark' : 'Light'} Mode</span>
+                        <label htmlFor="darkModeToggle" className="flex items-center cursor-pointer">
+                            <div className="relative">
+                                <input type="checkbox" id="darkModeToggle" className="sr-only" checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+                                <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                                <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                {/* --- Entry Forms --- */}
+                {forms.map((form, index) => renderForm(form, index))}
+
+                {/* --- Time Entries Section --- */}
+                <div style={{backgroundColor: '#107310'}} className="p-4 rounded-lg mt-8 shadow-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-2xl">Time Entries</h2>
+                        <div className="flex gap-2">
+                            <button onClick={() => setShowDeleteOldPrompt(true)} style={{backgroundColor: '#700216'}} className="text-white font-bold py-2 px-4 rounded transition-opacity hover:opacity-90">Delete Old</button>
+                            <button onClick={() => setShowDeleteCheckedPrompt(true)} style={{backgroundColor: '#bd9702'}} className="text-white font-bold py-2 px-4 rounded transition-opacity hover:opacity-90">Delete Checked</button>
+                        </div>
+                    </div>
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left">
+                            <thead>
+                                <tr className="border-b border-green-400">
+                                    <th className="p-2 w-8"></th>
+                                    <th className="p-2">Task</th>
+                                    <th className="p-2">Company</th>
+                                    <th className="p-2">Date</th>
+                                    <th className="p-2">Start</th>
+                                    <th className="p-2">End</th>
+                                    <th className="p-2">Actual (min)</th>
+                                    <th className="p-2 text-black" style={{backgroundColor: '#fac525'}}>Timesheet (min)</th>
+                                    <th className="p-2">Ticket #</th>
+                                    <th className="p-2 text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {entries.length > 0 ? entries.map(entry => (
+                                    <tr key={entry.id} className={`border-b border-green-500 transition-opacity ${entry.timeEntered ? 'opacity-50 line-through' : ''}`}>
+                                        <td className="p-2">
+                                            <input type="checkbox" checked={entry.timeEntered} onChange={() => handleToggleEntered(entry.id)} className="form-checkbox h-5 w-5 text-yellow-400 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500" title="Mark as entered for billing" />
+                                        </td>
+                                        <td className="p-2">{entry.taskName}</td>
+                                        <td className="p-2">{entry.company}</td>
+                                        <td className="p-2">{entry.date}</td>
+                                        <td className="p-2">{entry.startTime}</td>
+                                        <td className="p-2">{entry.endTime}</td>
+                                        <td className="p-2">{entry.actualTime}</td>
+                                        <td className="p-2 text-black" style={{backgroundColor: '#fac525'}}>{entry.timesheetTime}</td>
+                                        <td className="p-2">{entry.ticketNumber}</td>
+                                        <td className="p-2">
+                                            <div className="flex justify-center items-center gap-2">
+                                                <button onClick={() => handleEdit(entry.id)} className="text-white hover:text-yellow-300" title="Edit Entry"><EditIcon /></button>
+                                                <button onClick={() => handleInitiateDelete(entry.id)} className="text-white hover:text-red-400" title="Delete Entry"><DeleteIcon /></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )) : (
+                                    <tr>
+                                        <td colSpan="10" className="text-center p-4">No entries yet.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* --- Summary Section --- */}
+                <div style={{backgroundColor: '#210738'}} className="p-4 rounded-lg mt-8 shadow-lg">
+                    <h2 className="text-2xl mb-4">Summary</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p className="text-3xl">{summary.totalEntries}</p>
+                            <p className="text-sm opacity-75">Total Entries</p>
+                        </div>
+                        <div>
+                            <p className="text-3xl">{summary.totalActualTime}</p>
+                            <p className="text-sm opacity-75">Total Actual Time (min)</p>
+                        </div>
+                        <div>
+                            <p className="text-3xl">{summary.totalBillableTime}</p>
+                            <p className="text-sm opacity-75">Total Billable Time (min)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Updated to use React 18 createRoot API
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+    </script>
+    <style>
+        /* Style for the dark mode toggle */
+        #darkModeToggle:checked ~ .dot {
+            transform: translateX(100%);
+            background-color: #48bb78; /* green */
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ffd700'/><circle cx='50' cy='50' r='35' fill='none' stroke='%23333' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='25' stroke='%23333' stroke-width='3' stroke-linecap='round'/><line x1='50' y1='50' x2='65' y2='50' stroke='%23333' stroke-width='2' stroke-linecap='round'/><circle cx='50' cy='50' r='3' fill='%23333'/><rect x='45' y='10' width='10' height='8' rx='2' fill='%23333'/></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #eee;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .display {
+            font-size: 72px;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .notes-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .notes {
+            background-color: #222;
+            border: 1px solid #444;
+            color: #eee;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            height: 80px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .notes:focus {
+            border-color: #666;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 15px 30px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .btn-control {
+            background-color: #28a745;
+            color: white;
+            min-width: 120px;
+        }
+
+        .btn-control.running {
+            background-color: #007bff;
+        }
+
+        .btn-reset {
+            background-color: #d3d3d3;
+            color: #000;
+            min-width: 100px;
+        }
+
+        .btn-clear {
+            background-color: #666;
+            color: #eee;
+            padding: 10px 20px;
+            font-size: 14px;
+            height: fit-content;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display" id="display">00:00:00.0</div>
+        
+        <div class="controls">
+            <button id="controlBtn" class="btn-control">
+                <svg id="iconControl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </button>
+            <button id="resetBtn" class="btn-reset">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="notes-container">
+            <textarea id="notes" class="notes" placeholder="Notes..."></textarea>
+            <button id="clearBtn" class="btn-clear">Clear</button>
+        </div>
+    </div>
+
+    <script>
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval = null;
+        let isRunning = false;
+
+        const display = document.getElementById('display');
+        const controlBtn = document.getElementById('controlBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const iconControl = document.getElementById('iconControl');
+        const notesBox = document.getElementById('notes');
+        const clearBtn = document.getElementById('clearBtn');
+
+        const playIcon = '<path d="M8 5v14l11-7z"/>';
+        const pauseIcon = '<path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>';
+
+        function formatTime(ms) {
+            const totalTenths = Math.floor(ms / 100);
+            const tenths = totalTenths % 10;
+            const totalSeconds = Math.floor(totalTenths / 10);
+            const seconds = totalSeconds % 60;
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const minutes = totalMinutes % 60;
+            const hours = Math.floor(totalMinutes / 60);
+
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${tenths}`;
+        }
+
+        function updateDisplay() {
+            const currentTime = Date.now();
+            const timeElapsed = elapsedTime + (currentTime - startTime);
+            display.textContent = formatTime(timeElapsed);
+        }
+
+        function start() {
+            startTime = Date.now();
+            isRunning = true;
+            timerInterval = setInterval(updateDisplay, 100);
+            
+            controlBtn.classList.add('running');
+            iconControl.innerHTML = pauseIcon;
+        }
+
+        function pause() {
+            const currentTime = Date.now();
+            elapsedTime += currentTime - startTime;
+            clearInterval(timerInterval);
+            isRunning = false;
+            
+            controlBtn.classList.remove('running');
+            iconControl.innerHTML = playIcon;
+        }
+
+        function reset() {
+            clearInterval(timerInterval);
+            startTime = 0;
+            elapsedTime = 0;
+            isRunning = false;
+            display.textContent = '00:00:00.0';
+            
+            controlBtn.classList.remove('running');
+            iconControl.innerHTML = playIcon;
+        }
+
+        controlBtn.addEventListener('click', () => {
+            if (isRunning) {
+                pause();
+            } else {
+                start();
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            reset();
+        });
+
+        notesBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                notesBox.blur();
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            notesBox.value = '';
+        });
+    </script>
+</body>
+</html>

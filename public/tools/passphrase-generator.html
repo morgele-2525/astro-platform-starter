@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passphrase Generator</title>
+    <style>
+        body {
+            font-family: monospace;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        #passphrase {
+            font-size: 18px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #copyStatus {
+            color: green;
+            margin-left: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Passphrase Generator</h1>
+    <div id="passphrase"></div>
+    <button onclick="generatePassphrase()">Generate New</button>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <span id="copyStatus">Copied!</span>
+
+    <script>
+        // Syllable building blocks for pronounceable non-words
+        const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z'];
+        const vowels = ['a', 'e', 'i', 'o', 'u'];
+        const consonantBlends = ['bl', 'br', 'ch', 'cl', 'cr', 'dr', 'fl', 'fr', 'gl', 'gr', 'pl', 'pr', 'sc', 'sh', 'sk', 'sl', 'sm', 'sn', 'sp', 'st', 'sw', 'th', 'tr', 'tw', 'wh', 'wr'];
+        const specialChars = ['$', '&', '@', '!'];
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function generatePronouncableWord() {
+            const targetLength = 5 + Math.floor(Math.random() * 4); // 5-8 letters
+            let word = '';
+            let useBlend = Math.random() > 0.5;
+            
+            // Start with consonant or blend
+            if (useBlend && Math.random() > 0.5) {
+                word += getRandomElement(consonantBlends);
+            } else {
+                word += getRandomElement(consonants);
+            }
+            
+            // Alternate vowel-consonant until we reach target length
+            while (word.length < targetLength) {
+                if (word.length < targetLength) {
+                    word += getRandomElement(vowels);
+                }
+                if (word.length < targetLength) {
+                    // Occasionally use double consonants
+                    if (Math.random() > 0.85 && word.length < targetLength - 1) {
+                        word += getRandomElement(consonants);
+                    }
+                    word += getRandomElement(consonants);
+                }
+            }
+            
+            // Trim to exact length and capitalize first letter
+            word = word.substring(0, targetLength);
+            word = word.charAt(0).toUpperCase() + word.slice(1);
+            
+            return word;
+        }
+
+        function generateFiveDigitNumber() {
+            return String(Math.floor(Math.random() * 90000) + 10000);
+        }
+
+        function generatePassphrase() {
+            const prefix = getRandomElement(specialChars);
+            const suffix = getRandomElement(specialChars);
+            const word1 = generatePronouncableWord();
+            const number = generateFiveDigitNumber();
+            const word2 = generatePronouncableWord();
+            
+            const passphrase = `${prefix}${word1}-${number}-${word2}${suffix}`;
+            document.getElementById('passphrase').textContent = passphrase;
+            
+            // Hide copy status when generating new passphrase
+            document.getElementById('copyStatus').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const passphrase = document.getElementById('passphrase').textContent;
+            navigator.clipboard.writeText(passphrase).then(() => {
+                const status = document.getElementById('copyStatus');
+                status.style.display = 'inline';
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        // Generate on page load
+        window.onload = generatePassphrase;
+    </script>
+</body>
+</html>
